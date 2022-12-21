@@ -69,6 +69,10 @@
 	background-color: green;
 }
 
+#terrain .visited{
+	background-color: lightgrey;
+}
+
 #infos{
 	margin: 40px;
 	min-height: 60vh;

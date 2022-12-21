@@ -82,8 +82,89 @@ class Terrain{
 	}
 	
 
+	//avance la personne d'une case
+	avance(){
+		//retire la personne de la case précédente
+		this.tab[this.person.Y][this.person.X].isPerson = false;
+		this.tab[this.person.Y][this.person.X].isEmpty = true;
 
 
+		if(this.person.direction == 'N'){
+			this.person.Y = this.person.Y-1;
+		}else if(this.person.direction == 'S'){
+			this.person.Y = this.person.Y+1;
+		}else if(this.person.direction == 'E'){
+			this.person.X = this.person.X+1;
+		}else if(this.person.direction == 'O'){
+			this.person.X = this.person.X-1;
+		}
+
+		//ajoute la personne a la nouvelle case
+		this.tab[this.person.Y][this.person.X].isPerson = true;
+		this.tab[this.person.Y][this.person.X].isVisited = true;
+		this.tab[this.person.Y][this.person.X].isEmpty = false;
+
+		/* Met a jour le meilleur heuristique du jouer
+		 * attention au minimum locaux de certains terrains ! 
+		 */
+		let h = this.heuristique();
+		if(h < this.person.heuristique){
+			this.person.heuristique = h;
+			//console.log("new heuristique : "+h);
+		}
+
+		//meurt si elle eccède le nombre de pas 
+		this.person.nbPas++;
+		if(this.person.nbPas > nbPas){
+			this.person.die();
+		}
+		
+	}
+
+
+	/* choisit une direction de la personne aléatoire parmi les
+	 * cases disponibles et non visitées autour d'elle
+	 */
+	choixDirectionRandom(){
+		//liste des possibilités
+		var possib = [];
+
+		if(this.tab[this.person.Y-1][this.person.X].isEmpty && this.tab[this.person.Y-1][this.person.X].isVisited == false){
+			possib.push('N');
+		}
+		if(this.tab[this.person.Y+1][this.person.X].isEmpty && this.tab[this.person.Y+1][this.person.X].isVisited == false){
+			possib.push('S');
+		}
+		if(this.tab[this.person.Y][this.person.X+1].isEmpty && this.tab[this.person.Y][this.person.X+1].isVisited == false){
+			possib.push('E');
+		}
+		if(this.tab[this.person.Y][this.person.X-1].isEmpty && this.tab[this.person.Y][this.person.X-1].isVisited == false){
+			possib.push('O');
+		}
+
+		if(possib.length == 0){
+			this.person.die();
+		}else{
+			var randomIndice = getRandomInt(possib.length);
+			this.person.direction = possib[randomIndice];
+			return possib[randomIndice];
+		}
+	}
+
+
+
+
+	/* Renvoie la distance en nombre de cases
+ 	 * d'une position par rapport
+ 	 * à la cible (machine à café)
+	 * P : personne (aux coordonnées X Y)
+	 * T : un terrain avec une machine a café
+ 	 */
+	heuristique(){
+		let val = Math.abs(this.person.X - this.coffeeX) + Math.abs(this.person.Y - this.coffeeY);
+		//console.log("val = "+val);
+		return val;
+	}
 
 
 

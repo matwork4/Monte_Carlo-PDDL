@@ -1,4 +1,13 @@
 
+/* Représente un bloc du terrain
+ * isWall : mur
+ * isPerson : personne
+ * isCoffee : machine à café
+ * isEmpty : case libre
+ * isVisited : est déjà passé par là 
+ */
+
+
 class Block{
 
 
@@ -8,6 +17,7 @@ class Block{
 		this.isPerson = false;
 		this.isCoffee = false;
 		this.isEmpty = true;
+		this.isVisited = false;
 		
 		this.id = idBlock;
 		
@@ -35,6 +45,7 @@ class Block{
 		if(this.isEmpty){
 			this.isEmpty = false;
 			this.isPerson = true;
+			this.isVisited = true;
 		}else if(this.isCoffee){
 			this.isPerson = true;
 			console.log("Person est sur Coffee !")

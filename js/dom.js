@@ -18,6 +18,8 @@ function displayTerrain(dimX,dimY){
 					col.setAttribute('class', "person");
 				}else if(T.tab[i][j].isCoffee){
 					col.setAttribute('class', "coffee");
+				}else if(T.tab[i][j].isVisited){
+					col.setAttribute('class', "visited");
 				}else{
 					col.setAttribute('class', "empty");
 				}
@@ -39,6 +41,13 @@ function deleteTerrain(){
 
 function blockFunction(id){
 	console.log("block "+id);
+}
+
+/* reaffiche le terrain 
+ */
+function refreshTerrain(){
+	deleteTerrain();
+	displayTerrain(T.dimX,T.dimY);
 }
 
 
