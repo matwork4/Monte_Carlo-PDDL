@@ -1,44 +1,24 @@
 /* Ruffieux Mathis 
  * M2 IC
- * Projet solveur PDDL de problème de machine a café
- *
+ * Projet solveur PDDL pour le problème de la machine a café
  */
 
-
-var run = true;
-var sleepDuration = 500;
-var planSolution = [];
+//Variables globales
+var sleepDuration = 400;
+var temps_execution = 0; //chronometre du temps d'execution
+var tempsMax = 1000; //stop l'execution si on depasse ce temps en ms
+var planSolution = []; //a remplir au fur et a mesure
 var simulations = []; //contient des terrains avec des personnes
 
-var nbPersonnes = 20; //nombre de personnes de la simulation
-var nbPas = 20; //nombre de pas par personne
-var numeroTerrain = 1;
-
-var T = new Terrain(numeroTerrain);
-T.person.name = 'God';
-
-displayTerrain(T.dimX,T.dimY);
-
-//var val = heuristique(T.person,T);
+var nbPersonnes = 100; //nombre de personnes de la simulation
+var nbPas = 10; //nombre de pas initial par personne
+var numeroTerrain;
+var T;
 
 
-/*
-initSimulations();
-runSimulations();
-*/
-
-
-
-async function testAvance(){
-	T.choixDirectionRandom();
-	while(T.person.isAlive){
-		T.avance();
-		refreshTerrain();
-		T.choixDirectionRandom();
-		await sleep(sleepDuration);
-	}
-}
-
+/* Fonction de test pour exécuter l'algorithme en le visualisant
+ * en même temps 
+ */
 async function testMonteCarlo(){
 	while(T.heuristique()>1){
 		initSimulations();
@@ -51,14 +31,21 @@ async function testMonteCarlo(){
 	}
 }
 
-/* ajout reduction des doublons (allé retour N-S) dans le plan solution, 
- * et le jouer apres en reinitialisant T
-*/
 
+/* Lis un plan solution et l'exécute pour le visualiser 
+ */
+async function readPlanSolution(){
+	//re-initialise le terrain
+	T = new Terrain(numeroTerrain);
+	T.person.name = 'God';
 
-
-
-
+	for(let i=0;i<planSolution.length;i++){
+		T.person.direction = planSolution[i];
+		T.avance();
+		refreshTerrain();
+		await sleep(sleepDuration);
+	}
+}
 
 
 /* Sleep function
