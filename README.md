@@ -17,11 +17,11 @@ Ensuite cliquer sur "Exécuter" pour voir le plan solution s'exécuter dans le t
 L'objectif est d'implémenter un planeur pour résoudre des problèmes PDDL en utilisant l'algorithme de Monte Carlo.
 
 Pour celà nous utilisons le principe des "pure random walks". 
-Ce projet est encodé en Javascript et fonctionne et est illustré avec un problème PDDL précis expliqué en cours : Le problème de la machine à café.
-Les quatre benchmarks à tester sont quatre problèmes pour le domaine pddl de la machine à café (domainCoffee.pddl dans le répertoire pddl).
+Ce projet est encodé en Javascript et est illustré avec un problème PDDL précis expliqué en cours : Le problème de la machine à café.
+Les benchmarks à tester sont quatre problèmes pour le domaine pddl de la machine à café (domainCoffee.pddl dans le répertoire pddl) triés par difficulté croissante.
 Ce domaine est représenté en JS avec des modèles Block, Person et Terrain de la même manière que l'encodage PDDL. 
 
-Par exemple chaque blocs peuvent ont les prédicats suivants : 
+Par exemple chaque blocs ont les prédicats suivants : 
 - isWall
 - isPerson
 - isCoffee
@@ -35,8 +35,7 @@ Et les actions a effectuées sont :
 
 ### Explications du problème à résoudre 
 On est à l'étage d'un bâtiment et on cherche à se déplacer d'un point jusqu'à la machine à café. 
-
-Sur le terrain, la machine à café est en vert, et une personne en bleu.
+Sur le terrain la machine à café est en vert, et une personne en bleu.
 
 Pour celà, on envoie N étudiants se déplacer aléatoirement de K pas (profondeur), puis avec une fonction heuristique on trouve l'étudiant s'étant le plus approché de l'objectif (ici de la machine à café) et on réalise son premier pas. Ensuite on réitère l'opération. 
 
@@ -69,7 +68,7 @@ Temps moyens d'exécution de pddl (Fast Forward) :
 - map 3 : 150ms
 
 
-Note : Je n'ai pas réussi à créer les fichiers PDDL correspondants aux même benchmarks que ceux du programme, car il y a trop de cases sur le terrain. Par exemple, le fichier test1.pddl correspond au premier benchmark, mais ne fonctionne pas (la syntaxe du fichier PDDL n'accepte pas un terrain trop grand). A la place, nous avons deux maps plus petites reprises du projet Sokoban afin de comparer leur temps d'exécution.
+Note : Je n'ai pas réussi à créer les fichiers PDDL correspondants aux même benchmarks que ceux du programme, car il y a trop de cases sur le terrain. Par exemple, le fichier test1.pddl correspond au premier benchmark, mais ne fonctionne pas (la syntaxe du fichier PDDL n'accepte pas un terrain si grand). A la place, nous avons deux maps plus petites reprises du projet Sokoban (en retirant les caisses) afin de comparer leur temps d'exécution.
 
 
 ## Conclusion
