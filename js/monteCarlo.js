@@ -47,9 +47,10 @@ function runSimulations(){
 	*/
 	if(bestHeuristique == 1){
 		nbPas--;
+		//console.log("nbPas : "+nbPas);
 	}
 
-	console.log("bestStep = "+bestStep+", bestHeuristique = "+bestHeuristique);
+	//console.log("bestStep = "+bestStep+", bestHeuristique = "+bestHeuristique);
 	return bestStep;
 }
 
@@ -61,16 +62,30 @@ function runSimulations(){
 function monteCarlo(){
 	let chrono = parseInt(Date.now()); //chronomètre son exécution
 	let tps = 0;
+	let planNonTrouve = false;
 	planSolution = [];
-	while(T.heuristique()>1 && tps<tempsMax){
+	while(T.heuristique()>1 && !planNonTrouve){
 		initSimulations();
 		let nextStep = runSimulations();
 		planSolution.push(nextStep);
 		T.person.direction = nextStep;
 		T.avance();
 		tps = parseInt(Date.now())-chrono;
+		if(tps>tempsMax){
+			planNonTrouve = true;
+		}
 	}
-	temps_execution = tps;
+
+	//si pas de plan trouve au bout de 1s on relance tout
+	if(planNonTrouve){
+		console.log("reload planNonTrouve");
+		T = new Terrain(numeroTerrain);
+		T.person.name = 'God';
+		monteCarlo();
+	}else{
+		temps_execution = tps;
+	}
+
 }
 
 

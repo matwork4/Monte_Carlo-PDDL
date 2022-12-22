@@ -4,14 +4,14 @@
  */
 
 //Variables globales
-var sleepDuration = 400;
+var sleepDuration = 300;
 var temps_execution = 0; //chronometre du temps d'execution
 var tempsMax = 1000; //stop l'execution si on depasse ce temps en ms
 var planSolution = []; //a remplir au fur et a mesure
 var simulations = []; //contient des terrains avec des personnes
 
 var nbPersonnes = 100; //nombre de personnes de la simulation
-var nbPas = 10; //nombre de pas initial par personne
+var nbPas; //nombre de pas initial par personne (= profondeur de la simulation)
 var numeroTerrain;
 var T;
 

@@ -18,7 +18,7 @@
     (isEmpty b31)(isEmpty b32)(isEmpty b34)
     (isEmpty b41)(isEmpty b44)
     (isEmpty b51)(isEmpty b54)
-    (isEmpty b61)(isEmpty b62)(isEmpty b63)(isEmpty b64) ;;ATTENTION : pas de (isEmpty b61) normalement
+    (isEmpty b61)(isEmpty b62)(isEmpty b63)(isEmpty b64) 
     ;;On définit la personne
     (isPerson b43)
     ;;On definit les TOPs

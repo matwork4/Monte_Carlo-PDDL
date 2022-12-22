@@ -50,7 +50,7 @@ class Block{
 			this.isPerson = true;
 			console.log("Person est sur Coffee !")
 		}else{
-			console.log("Erreur : setPerson not empty")
+			//console.log("Erreur : setPerson not empty")
 		}
 	}
 

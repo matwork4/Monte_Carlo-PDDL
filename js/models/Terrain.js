@@ -5,6 +5,12 @@ class Terrain{
 
 		if(numTerrain == 1){
 			this.initT1();
+		}else if(numTerrain == 2){
+			this.initT2();
+		}else if(numTerrain == 3){
+			this.initT3();
+		}else if(numTerrain == 4){
+			this.initT4();
 		}else{
 			console.log("(Constructeur) Choix du terrain manquant");
 		}
@@ -54,6 +60,7 @@ class Terrain{
 	initT1(){
 		//créer un terrain avec des dimentions 
 		this.initTerrainGlobal(20,15);
+		this.setNbPasMax();
 		this.initPerson(5,2);
 		this.setCoffeeMachine(15,10);
 
@@ -69,6 +76,132 @@ class Terrain{
 		this.setWall(7,1);
 		
 	}
+
+	initT2(){
+		//créer un terrain avec des dimentions 
+		this.initTerrainGlobal(20,15);
+		this.setNbPasMax();
+		this.initPerson(5,2);
+		this.setCoffeeMachine(5,10);
+
+		//ajoute des murs
+		this.setWall(1,5);
+		this.setWall(2,5);
+		this.setWall(3,5);
+		this.setWall(4,5);
+		this.setWall(5,5);
+		this.setWall(6,5);
+		this.setWall(7,5);
+		this.setWall(8,5);
+		this.setWall(9,5);
+		this.setWall(10,5);
+		this.setWall(11,5);
+		this.setWall(12,5);
+	}
+
+	initT3(){
+		//créer un terrain avec des dimentions 
+		this.initTerrainGlobal(20,20);
+		this.setNbPasMax();
+		this.initPerson(7,7);
+		this.setCoffeeMachine(11,11);
+
+		//ajoute des murs
+		this.setWall(9,3);
+		this.setWall(9,4);
+		this.setWall(9,5);
+		this.setWall(9,6);
+		this.setWall(9,7);
+		this.setWall(9,8);
+		this.setWall(9,9);
+		this.setWall(9,10);
+		this.setWall(9,11);
+		this.setWall(9,12);
+		this.setWall(9,13);
+		this.setWall(9,14);
+		this.setWall(9,15);
+
+		this.setWall(3,9);
+		this.setWall(4,9);
+		this.setWall(5,9);
+		this.setWall(6,9);
+		this.setWall(7,9);
+		this.setWall(8,9);
+		this.setWall(10,9);
+		this.setWall(11,9);
+		this.setWall(12,9);
+		this.setWall(13,9);
+		this.setWall(14,9);
+		this.setWall(15,9);
+	}
+
+	initT4(){
+		//créer un terrain avec des dimentions 
+		this.initTerrainGlobal(20,20);
+		this.setNbPasMax();
+		this.initPerson(2,16);
+		this.setCoffeeMachine(16,6);
+
+		//ajoute des murs
+		this.setWall(3,17);
+		this.setWall(3,16);
+		this.setWall(3,15);
+		this.setWall(3,14);
+		
+		this.setWall(3,12);
+		this.setWall(3,11);
+		this.setWall(3,10);
+
+		this.setWall(2,10);
+		this.setWall(1,10);
+		
+		this.setWall(3,8);
+		this.setWall(3,7);
+		this.setWall(3,6);
+		this.setWall(3,5);
+		this.setWall(3,4);
+		
+		this.setWall(3,2);
+		this.setWall(3,1);
+
+		this.setWall(4,8);
+		this.setWall(5,8);
+		this.setWall(6,8);
+		this.setWall(7,8);
+		this.setWall(8,8);
+		this.setWall(9,8);
+		this.setWall(10,8);
+		this.setWall(11,8);
+		this.setWall(12,8);
+		this.setWall(13,8);
+		this.setWall(14,8);
+		this.setWall(15,8);
+		this.setWall(16,8);
+		this.setWall(17,8);
+
+		this.setWall(4,10);
+		this.setWall(5,10);
+		this.setWall(6,10);
+		this.setWall(7,10);
+		this.setWall(8,10);
+		this.setWall(9,10);
+		this.setWall(10,10);
+		this.setWall(11,10);
+		this.setWall(12,10);
+		this.setWall(13,10);
+		this.setWall(14,10);
+		this.setWall(15,10);
+		this.setWall(16,10);
+
+
+		
+	}
+
+	setNbPasMax(){
+		nbPas = parseInt((this.dimX + this.dimY) / 2);
+		//console.log("set nbPas : "+nbPas);
+	}
+
 
 	//rentourne un bloc en fonction de son id
 	searchBlockById(id){

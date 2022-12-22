@@ -9,6 +9,6 @@ Algorithme de planification automatique pour un problème PDDL
 - en js, modèles pour représenter ce problème V
 - implémenter A* qui trouve le chemin le plus court vers la solution (pour calculer les heuristiques) V
 - implémenter Monte Carlo (ressemble à minmax) pour le terrain donné V
-- afficher le plan solution trouvé
+- afficher le plan solution trouvé V
 - comparer son temps d'exécution avec pddl4j pour chaque terrain (1 "benchmark" serait 1 terrain différent avec difficulté croissante au lieu de blocksword etc.)
 - compte rendu
